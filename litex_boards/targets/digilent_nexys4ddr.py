@@ -17,7 +17,6 @@ from litex.soc.integration.soc import *
 from litex.soc.integration.builder import *
 from litex.soc.cores.video import VideoVGAPHY
 from litex.soc.cores.led import LedChaser
-from litex.soc.cores.seven_seg import SevenSegmentDisplay
 
 from litedram.modules import MT47H64M16
 from litedram.phy import s7ddrphy
@@ -87,6 +86,7 @@ class BaseSoC(SoCCore):
             
         # Seven segment ----------------------------------------------------------------------------
         if with_seven_seg:
+            from litex.soc.cores.seven_seg import SevenSegmentDisplay
             seven_seg = platform.request("seven_seg")
             seven_seg_ctrl_n = platform.request("seven_seg_ctrl_n")
             self.submodules.seven_seg = SevenSegmentDisplay(
